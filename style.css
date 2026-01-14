@@ -1164,6 +1164,8 @@ body.listening .player-bar {
 
 .info-modal-content {
   position: relative;
+  z-index: 9999;
+}
 }
 
 .info-close {
@@ -1378,9 +1380,8 @@ body.listening .player-bar {
   transform: translateX(4px);
 }
 
-.info-modal {
-  z-index: 9999;
-}
+
+
 
 
 
