@@ -1090,7 +1090,7 @@ body.listening .player-bar {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999;
+  z-index: 9999;
 }
 
 .info-modal.hidden {
@@ -1164,7 +1164,6 @@ body.listening .player-bar {
 
 .info-modal-content {
   position: relative;
-  z-index: 9999;
 }
 }
 
@@ -1379,6 +1378,7 @@ body.listening .player-bar {
 .patron-card:hover .door {
   transform: translateX(4px);
 }
+
 
 
 
