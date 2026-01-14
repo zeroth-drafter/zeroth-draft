@@ -1378,6 +1378,12 @@ body.listening .player-bar {
   transform: translateX(4px);
 }
 
+.info-modal {
+  z-index: 9999;
+}
+
+
+
 
 
 
