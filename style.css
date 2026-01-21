@@ -1776,7 +1776,7 @@ body.listening .player-bar {
 
 @media (max-width: 600px) {
   .upi-qr {
-    width: 110px;
+    width: 160px;
   }
 }
 
@@ -1834,6 +1834,7 @@ body.listening .player-bar {
   pointer-events: auto;
   cursor: pointer;
 }
+
 
 
 
