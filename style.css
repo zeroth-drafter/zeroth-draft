@@ -1829,6 +1829,14 @@ body.listening .player-bar {
   cursor: pointer;
 }
 
+.product-images img,
+.gallery-image img {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+
+
 
 
 
