@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom-Clothes – Z3ROth DRAFT</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<header class="site-nav">
+  <a href="index.html" class="nav-logo">Z3ROth DRAFT</a>
+  <nav class="nav-links">
+    <a href="music.html">music</a>
+    <a href="crochet.html">crochet</a>
+    <a href="clothes.html" class="active">clothes</a>
+    <a href="caps.html">caps</a>
+  </nav>
+</header>
+
+<section class="hero" style="margin-bottom:2rem;">
+  <h1>Z3ROth DRAFT</h1>
+  <h2>clothes</h2>
+
+  <p class="music-intro">
+    each piece takes time — and intention.
+  </p>
+
+  <p class="music-note">
+    limited quantities · preorder preferred
+  </p>
+</section>
+
+<div class="view-switch">
+  <button type="button" class="view-btn " data-view="sale">For Sale</button>
+  <button type="button" class="view-btn active" data-view="gallery">Gallery</button>
+</div>
+
+<main class="products">
+
+  <!-- ================= SALE ================= -->
+  <section class="view" id="saleView">
+    <div class="product-grid">
+
+      <article
+        class="product-card"
+        data-name="Green Beanie x Ski-Mask x flowers"
+        data-price="699"
+        data-stock="1"
+        data-preorder="true"
+      >
+        <div class="product-images">
+          <img src="clothes-img/OTW.jpg" />
+        </div>
+
+        <div class="product-info">
+          <div class="product-header">
+            <h3>in progress</h3>
+            <span class="price">₹xxx</span>
+          </div>
+
+          <p class="stock-line"></p>
+          <!--
+          <div class="actions">
+            <button type="button" class="btn secondary" data-action="add-to-cart">
+              Add to Cart
+            </button>
+
+            <button type="button" class="btn primary buy-now-btn">
+              Buy Now
+            </button>
+          </div>
+        -->
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= PREORDER MODAL ================= -->
+<div id="preorderModal" class="info-modal hidden">
+  <div class="info-modal-content">
+    <p>
+      each piece is made slowly,<br>
+      by hand.<br><br>
+
+      preorders help me plan time,
+      materials, and care.<br><br>
+
+      once you preorder,<br>
+      I’ll reach out personally
+      before starting your piece.
+    </p>
+
+    <button type="button" id="preorderFormBtn" class="btn primary" style="margin-top:1.2rem;">
+      proceed to preorder
+    </button>
+
+    <p class="preorder-note">
+      fill this form and your product will be on its way.
+    </p>
+
+    <button type="button" id="closePreorder" class="info-close">❎</button>
+  </div>
+</div>
+
+<!-- ================= CART ================= -->
+<div class="cart-wrapper" style="display:none;">
+  <span class="cart-hint">click on the cart to checkout 👉</span>
+  <button type="button" id="cartBtn" class="cart-btn">
+    🛒<sup id="cartCount">0</sup>
+  </button>
+</div>
+
+<div id="cartModal" class="modal">
+  <div class="modal-content">
+    <span class="modal-x">×</span>
+
+    <h3>Your Cart</h3>
+    <ul id="cartItems"></ul>
+
+    <p id="cartTotal">Total: ₹0</p>
+    <button type="button" id="buyNowBtn" class="btn primary">Buy Now</button>
+  </div>
+</div>
+
+<!-- ================= GALLERY ================= -->
+<section class="view active" id="galleryView">
+  <div class="gallery-grid">
+
+        <!-- GALLERY ITEM : SINGLE IMAGE -->
+    <article class="gallery-item">
+      <div class="gallery-image">
+        <img src="clothes-img/nitro-solo.jpg" alt="Artwork">
+      </div>
+
+      <div class="gallery-note">
+        "the skull between my ears is a bad neighbourhood" - Chester Bennington (Likin Park) said this in an interview and it stayed with me for long. So had to make this.
+      </div>
+    </article>
+
+    <!-- GALLERY ITEM : MULTI IMAGE -->
+    <article class="gallery-item" data-rotate="true">
+      <div class="gallery-image">
+        <img src="clothes-img/nitro-bts02.jpg" alt="Artwork">
+        <img src="clothes-img/nitro-bts01.jpg" alt="Artwork">
+        <img src="clothes-img/nitro-bts03.jpg" alt="Artwork">
+      </div>
+
+      <div class="gallery-note">
+        And these are some bts, of the same, a friend, brother of mine (Nitrocen) earned this as a gift, as a token of respect in a rap-cypher   
+      </div>
+    </article>
+
+    <!-- GALLERY ITEM : SINGLE IMAGE -->
+    <article class="gallery-item">
+      <div class="gallery-image">
+        <img src="clothes-img/2tak-bts.jpg" alt="Artwork">
+      </div>
+
+      <div class="gallery-note">
+        when i had just started customising clothes/caps. Cap-text : KIDA (my stage name, which is an acronym for The K-kid I-is D-dead A-alive)
+      </div>
+    </article>
+
+    <!-- GALLERY ITEM : SINGLE IMAGE -->
+    <article class="gallery-item">
+      <div class="gallery-image">
+        <img src="clothes-img/blanket.jpg" alt="Artwork">
+      </div>
+
+      <div class="gallery-note">
+        A blanket tored-apart, stitched, turned to a sweatshirt, for no reason than it being a Zeroth-Draft.
+      </div>
+    </article>
+
+     <!-- GALLERY ITEM : SINGLE IMAGE -->
+    <article class="gallery-item">
+      <div class="gallery-image">
+        <img src="clothes-img/concept02.jpg" alt="Artwork">
+      </div>
+
+      <div class="gallery-note">
+        A friend had casually texted me this and tbh it did send me to a trance. That quote, is something else, so did search for an artwork that matches it's calibre to somewhat extent and sketched it all. i wish to paint it over one of my fav hoodies
+      </div>
+    </article>
+
+    <!-- GALLERY ITEM : MULTI IMAGE -->
+    <article class="gallery-item" data-rotate="true">
+      <div class="gallery-image">
+        <img src="clothes-img/concept01.jpg" alt="Artwork">
+        <img src="clothes-img/concept03.jpg" alt="Artwork">
+      </div>
+
+      <div class="gallery-note">
+        a few more sketches I've, which i wish to put over clothes sooner. inspiration : Pinterest
+      </div>
+    </article>
+
+    <!-- GALLERY ITEM : SINGLE IMAGE -->
+    <article class="gallery-item">
+      <div class="gallery-image">
+        <img src="clothes-img/shoes.jpg" alt="Artwork">
+      </div>
+
+      <div class="gallery-note">
+        P.S : i customise shoes as well. haven't added the section yet, but yea soon!
+      </div>
+    </article>
+
+    <!-- GALLERY ITEM : SINGLE IMAGE -->
+    <article class="gallery-item">
+      <div class="gallery-image">
+        <img src="clothes-img/shoes02.jpg" alt="Artwork">
+      </div>
+
+      <div class="gallery-note">
+        A Stray-dawg that's who i'm
+      </div>
+    </article>
+
+  </div>
+</section>
+
+
+<script src="products.js"></script>
+
+<script>
+  document.querySelectorAll('.gallery-item[data-rotate="true"]').forEach(item => {
+    const images = item.querySelectorAll('.gallery-image img');
+    if (images.length <= 1) return;
+
+    let index = 0;
+
+    images.forEach((img, i) => {
+      img.style.opacity = i === 0 ? '1' : '0';
+    });
+
+    setInterval(() => {
+      images[index].style.opacity = '0';
+      index = (index + 1) % images.length;
+      images[index].style.opacity = '1';
+    }, 3500); // slow, calm
+  });
+</script>
+
+
+<script>
+  const viewBtns = document.querySelectorAll(".view-btn");
+  const saleView = document.getElementById("saleView");
+  const galleryView = document.getElementById("galleryView");
+
+  viewBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      viewBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      saleView.classList.remove("active");
+      galleryView.classList.remove("active");
+
+      btn.dataset.view === "sale"
+        ? saleView.classList.add("active")
+        : galleryView.classList.add("active");
+    });
+  });
+</script>
+
+ <footer class="site-footer">
+  <p class="footer-title">zeroth draft</p>
+
+  <p class="footer-links">
+    <a href="index.html">↩︎ home</a> ·
+    <a href="https://instagram.com/me_kida" target="_blank">instagram</a>
+  </p>
+
+  <p class="footer-note">
+    built slowly, by hand.
+  </p>
+</footer>
+
+<div id="lightbox" class="lightbox hidden">
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+</body>
+</html>

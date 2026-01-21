@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Music – Z3ROth DRAFT</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<main class="container">
+
+  <!-- NAV -->
+  <header class="site-nav">
+    <a href="index.html" class="nav-logo">Z3ROth DRAFT</a>
+    <nav class="nav-links">
+      <a href="music.html">music</a>
+      <a href="crochet.html">crochet</a>
+      <a href="clothes.html">clothes</a>
+      <a href="caps.html">caps</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <header class="hero">
+    <h1>Z3ROth DRAFT</h1>
+    <h2>music</h2>
+  </header>
+
+  <!-- INFO LINE -->
+  <div class="music-info-line">
+    <span>press play — or click</span>
+    <button id="infoBtn" class="info-btn highlight">here</button>
+    <span>to get introduced to the music room</span>
+  </div>
+
+  <!-- AUDIO -->
+  <audio id="globalAudio" preload="auto" playsinline></audio>
+
+  <!-- TRACK LIST -->
+  <section class="album-section">
+  
+    <!-- TRACK I -->
+    <div class="track">
+      <div class="track-meta">
+        <span class="track-number">I</span>
+        <span class="track-title">GHAR</span>
+      </div>
+      <p class="music-note play-hint">
+  ▶ tap the artwork to listen ⏸
+</p>
+
+      <div class="album-art" data-audio="music/track1.mp3">
+        <img src="assets/album1.jpg" alt="GHAR">
+        <button class="play-btn">▶</button>
+      </div>
+      <div class="music-actions">
+        <button class="btn primary supportBtn">Download HQ - Support Artist</button>
+      </div>
+    </div>
+
+<!-- TRACK III -->
+    <div class="track">
+      <div class="track-meta">
+        <span class="track-number">II</span>
+        <span class="track-title">FREEFALLIN</span>
+      </div>
+      <div class="album-art" data-audio="music/track3.mp3">
+        <img src="assets/album3.jpg" alt="FREEFALLIN">
+        <button class="play-btn">▶</button>
+      </div>
+      <div class="music-actions">
+        <button class="btn primary supportBtn">Download HQ - Support Artist</button>
+      </div>
+    </div>
+
+<!-- TRACK IV -->
+    <div class="track">
+      <div class="track-meta">
+        <span class="track-number">III</span>
+        <span class="track-title">BMR</span>
+      </div>
+      <div class="album-art" data-audio="music/track4.mp3">
+        <img src="assets/album4.jpg" alt="BMR">
+        <button class="play-btn">▶</button>
+      </div>
+      <div class="music-actions">
+        <button class="btn primary supportBtn">Download HQ - Support Artist</button>
+      </div>
+    </div>
+
+    <!-- TRACK II -->
+    <div class="track">
+      <div class="track-meta">
+        <span class="track-number">IV</span>
+        <span class="track-title">SICKSHIT</span>
+      </div>
+      <div class="album-art" data-audio="music/track2.mp3">
+        <img src="assets/album2.jpg" alt="SICKSHIT">
+        <button class="play-btn">▶</button>
+      </div>
+      <div class="music-actions">
+        <button class="btn primary supportBtn">Download HQ - Support Artist</button>
+      </div>
+    </div>
+
+    
+
+    
+
+    <!-- TRACK V -->
+    <div class="track">
+      <div class="track-meta">
+        <span class="track-number">V</span>
+        <span class="track-title">NOSTRADAMOUS</span>
+      </div>
+      <div class="album-art" data-audio="music/track5.mp3">
+        <img src="assets/album5.jpg" alt="NOSTRADAMOUS">
+        <button class="play-btn">▶</button>
+      </div>
+      <div class="music-actions">
+        <button class="btn primary supportBtn">Download HQ - Support Artist</button>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<!-- INFO MODAL (unchanged) -->
+<div id="infoModal" class="info-modal hidden">
+  <div class="info-modal-content">
+    <p>
+      welcome.<br><br>
+      press play on any track to listen.<br>
+      the player stays active in the background as you explore.<br><br>
+      you can loop a track if you want to hear it again.<br><br>
+      your support helps this project continue.
+    </p>
+    <button id="closeInfo" class="info-close">❎ </button>
+  </div>
+</div>
+
+<!-- SUPPORT POPUP -->
+<div id="supportModal" class="info-modal hidden">
+  <div class="info-modal-content">
+
+    <button id="closeSupport" class="info-close">×</button>
+
+    <p>
+thanks already, for being here .<br>
+i’m trying to build this independently,
+connecting the work straight to listeners.<br><br>
+
+you can keep listening here, or download the tracks for free —
+there’s no fixed price, and zero works too.<br><br>
+
+if you decide to support the work,
+it helps me keep this space going
+and put out more releases.<br><br>
+
+after the form,
+you’ll receive the files, lyrics,
+a little background on the song,
+and a letter from the artist.<br><br>
+
+thanks again for listening — truly grateful :)
+
+
+    </p><br>
+
+    <button id="continueSupport" class="btn primary">continue to the form</button>
+
+  </div>
+</div>
+
+<!-- PLAYER BAR -->
+<div id="playerBar" class="player-bar hidden">
+  <div class="player-left">
+    <img id="playerArt" src="" alt="">
+    <div class="player-info">
+      <span id="playerTrackNumber"></span>
+      <span id="playerTrackTitle"></span>
+    </div>
+  </div>
+  <div class="player-center">
+    <div class="player-controls">
+      <button id="prevBtn">⏮</button>
+      <button id="playPauseBtn">▶</button>
+      <button id="nextBtn">⏭</button>
+      <button id="loopBtn">🔁</button>
+    </div>
+    <input type="range" id="progressBar" min="0" max="100" step="0.1">
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+ <footer class="site-footer">
+  <p class="footer-title">zeroth draft</p>
+
+  <p class="footer-links">
+    <a href="index.html">↩︎ home</a> ·
+    <a href="https://instagram.com/me_kida" target="_blank">instagram</a>
+  </p>
+
+  <p class="footer-note">
+    built slowly, by hand.
+  </p>
+</footer>
+
+</body>
+</html>

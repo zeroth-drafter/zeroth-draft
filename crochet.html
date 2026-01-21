@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crochet – Z3ROth DRAFT</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="site-nav">
+  <a href="index.html" class="nav-logo">Z3ROth DRAFT</a>
+  <nav class="nav-links">
+    <a href="music.html">music</a>
+    <a href="crochet.html">crochet</a>
+    <a href="clothes.html">clothes</a>
+    <a href="caps.html">caps</a>
+  </nav>
+</header>
+
+<!-- QUIET INTRO -->
+<section class="hero" style="margin-bottom:2rem;">
+  <h1>Z3ROth DRAFT</h1>
+  <h2>crochet</h2>
+
+  <p class="music-intro">
+    handmade, slowly.<br>
+    each piece takes time — and intention.
+  </p>
+
+  <p class="music-note">
+    limited quantities · preorder preferred
+  </p>
+</section>
+
+<main class="products">
+  <!-- PRODUCT 2 -->
+  <article
+    class="product-card"
+    data-name="Green Beanie x Ski-Mask x flowers"
+    data-price="699"
+    data-stock="1"
+    data-preorder="true"
+  >
+    <div class="product-images image-group">
+      <img src="img/beanie1.jpg" />
+      <img src="img/beanie2.jpg" />
+      <img src="img/beanie3.jpg" />
+      <img src="img/beanie4.jpg" />
+    </div>
+
+    <div class="product-info">
+      <div class="product-header">
+        <h3>Green Beanie x Ski-Mask x flowers</h3>
+        <span class="price">₹699</span>
+      </div>
+
+      <p class="stock-line"></p>
+
+      <div class="actions">
+  <button class="btn secondary" data-action="add-to-cart">
+    Add to Cart
+  </button>
+
+  <button class="btn primary buy-now-btn">
+    Buy Now
+  </button>
+</div>
+
+
+  </article>
+  
+  <!-- PRODUCT 1 -->
+  <article
+    class="product-card"
+    data-name="Go Green Crochet Leaf (collection of 3)"
+    data-price="149"
+    data-stock="2"
+    data-preorder="true"
+  >
+    <div class="product-images image-group">
+      <img src="img/leaf1.jpg" />
+      <img src="img/leaf2.jpg" />
+    </div>
+
+    <div class="product-info">
+      <div class="product-header">
+        <h3>Go Green Leaf Crochet X 3 (kEY CHAIN SIZE)</h3>
+        <span class="price">₹149</span>
+      </div>
+
+      <p class="stock-line"></p>
+
+      <div class="actions">
+  <button class="btn secondary" data-action="add-to-cart">
+    Add to Cart
+  </button>
+
+  <button class="btn primary buy-now-btn">
+    Buy Now
+  </button>
+</div>
+
+
+  </article>
+
+
+
+  <!-- PRODUCT 3 -->
+  <article
+    class="product-card"
+    data-name="Skull Pattern Ski-Mask"
+    data-price="999"
+    data-stock="0"
+    data-preorder="true"
+  >
+    <div class="product-images image-group">
+      <img src="img/ski-maskx.jpg" />
+      <img src="img/ski-maskx2.jpg" />
+    </div>
+
+    <div class="product-info">
+      <div class="product-header">
+        <h3>Skull Pattern Ski-Mask</h3>
+        <span class="price">₹999</span>
+      </div>
+
+      <p class="stock-line"></p>
+
+      <div class="actions">
+  <button class="btn secondary" disabled>
+    Add to Cart
+  </button>
+
+  <button class="btn primary preorder-btn">
+    Preorder
+  </button>
+</div>
+
+
+  </article>
+
+  <!-- PRODUCT 4 -->
+  <article
+    class="product-card"
+    data-name="Skull Pattern Ski-Mask (Blue Variant)"
+    data-price="999"
+    data-stock="0"
+    data-preorder="true"
+  >
+    <div class="product-images image-group">
+      <img src="img/ski-mask.jpg" />
+      <img src="img/ski-mask02.jpg" />
+    </div>
+
+    <div class="product-info">
+      <div class="product-header">
+        <h3>Skull Pattern Ski-Mask (Blue Variant)</h3>
+        <span class="price">₹999</span>
+      </div>
+
+      <p class="stock-line"></p>
+
+      <div class="actions">
+  <button class="btn secondary" disabled>
+    Add to Cart
+  </button>
+
+  <button class="btn primary preorder-btn">
+    Preorder
+  </button>
+</div>
+
+
+  </article>
+
+</main>
+
+<!-- PREORDER INFO MODAL -->
+<div id="preorderModal" class="info-modal hidden">
+  <div class="info-modal-content">
+    <p>
+      each piece is made slowly,<br>
+      by hand.<br><br>
+
+      preorders help me plan time,
+      materials, and care.<br><br>
+
+      once you preorder,<br>
+      I’ll reach out personally
+      before starting your piece.
+    </p>
+
+    <!-- PREORDER CTA -->
+    <button id="preorderFormBtn" class="btn primary" style="margin-top:1.2rem;">
+      proceed to preorder
+    </button>
+
+    <p class="preorder-note">
+      fill this form and your product will be on its way.
+    </p>
+
+    <button id="closePreorder" class="info-close">❎</button>
+  </div>
+</div>
+
+
+<!-- CART -->
+<div class="cart-wrapper" style="display:none;">
+  <span class="cart-hint">click on the cart to checkout 👉</span>
+  <button id="cartBtn" class="cart-btn">
+    🛒<sup id="cartCount">0</sup>
+  </button>
+</div>
+
+
+<div id="cartModal" class="modal">
+  <div class="modal-content">
+    <span class="modal-x">×</span>
+
+    <h3>Your Cart</h3>
+    <ul id="cartItems"></ul>
+
+    <p id="cartTotal">Total: ₹0</p>
+    <button id="buyNowBtn" class="btn primary">Buy Now</button>
+  </div>
+</div>
+
+<script src="products.js"></script>
+
+ <footer class="site-footer">
+  <p class="footer-title">zeroth draft</p>
+
+  <p class="footer-links">
+    <a href="index.html">↩︎ home</a> ·
+    <a href="https://instagram.com/me_kida" target="_blank">instagram</a>
+  </p>
+
+  <p class="footer-note">
+    built slowly, by hand.
+  </p>
+</footer>
+
+<div id="lightbox" class="lightbox hidden">
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+
+</body>
+</html>
+
+
+
+
+
+
