@@ -1765,8 +1765,8 @@ body.listening .player-bar {
 }
 
 .upi-qr {
-  width: 160px;        /* base size on desktop */
-  max-width: 60vw;     /* prevents overflow on small screens */
+  width: 180px;        /* base size on desktop */
+  max-width: 65vw;     /* prevents overflow on small screens */
   height: auto;
   display: block;
   margin: 0 auto 1.2rem;
@@ -1776,7 +1776,7 @@ body.listening .player-bar {
 
 @media (max-width: 600px) {
   .upi-qr {
-    width: 160px;
+    width: 180px;
   }
 }
 
@@ -1834,6 +1834,7 @@ body.listening .player-bar {
   pointer-events: auto;
   cursor: pointer;
 }
+
 
 
 
