@@ -1,69 +1,175 @@
-// ---------- LIGHTBOX (FINAL) ----------
+document.addEventListener("DOMContentLoaded", () => {
+  const audio = document.getElementById("globalAudio");
+  const tracks = Array.from(document.querySelectorAll(".track"));
 
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
+  let currentIndex = -1;
 
-let currentImages = [];
-let currentIndex = 0;
+  // PLAYER BAR ELEMENTS
+  const playerBar = document.getElementById("playerBar");
+  const playPauseBtn = document.getElementById("playPauseBtn");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const loopBtn = document.getElementById("loopBtn");
+  const progressBar = document.getElementById("progressBar");
+  const trackTitle = document.getElementById("playerTrackTitle");
+  const trackNumber = document.getElementById("playerTrackNumber");
+  const playerArt = document.getElementById("playerArt");
 
-if (lightbox && lightboxImg) {
-  // Event delegation: works for dynamically added images
-  document.addEventListener("click", (e) => {
-    const img = e.target.closest(
-      ".product-images img, .gallery-image img"
-    );
-    if (!img) return;
+  /* ---------- CORE ---------- */
 
-    const parent =
-      img.closest(".image-group") || img.parentElement;
+  function loadTrack(index) {
+    const track = tracks[index];
+    if (!track) return;
 
-    currentImages = Array.from(parent.querySelectorAll("img"));
-    currentIndex = currentImages.indexOf(img);
+    const album = track.querySelector(".album-art");
+    const img = album.querySelector("img");
 
-    openLightbox();
-  });
+    audio.src = album.dataset.audio;
+    audio.load();
+    audio.play();
 
-  function openLightbox() {
-    // IMPORTANT: neutralize rotation opacity
-    currentImages.forEach(img => {
-      img.style.opacity = "1";
+    currentIndex = index;
+    document.body.classList.add("listening");
+
+    if (playerBar) playerBar.classList.remove("hidden");
+    if (trackTitle) trackTitle.textContent =
+      track.querySelector(".track-title").textContent;
+    if (trackNumber) trackNumber.textContent =
+      track.querySelector(".track-number").textContent;
+    if (playerArt) playerArt.src = img.src;
+
+    setActivePlayButton();
+    if (playPauseBtn) playPauseBtn.textContent = "❚❚";
+  }
+
+  function togglePlay() {
+    if (audio.paused) {
+      audio.play();
+      document.body.classList.add("listening");
+      if (playPauseBtn) playPauseBtn.textContent = "❚❚";
+    } else {
+      audio.pause();
+      document.body.classList.remove("listening");
+      if (playPauseBtn) playPauseBtn.textContent = "▶";
+    }
+  }
+
+  function setActivePlayButton() {
+    document.querySelectorAll(".play-btn").forEach(btn => {
+      btn.textContent = "▶";
     });
 
-    lightboxImg.src = currentImages[currentIndex].src;
-    lightbox.classList.remove("hidden");
-    document.body.style.overflow = "hidden";
+    if (currentIndex >= 0) {
+      const activeBtn = tracks[currentIndex].querySelector(".play-btn");
+      if (activeBtn) activeBtn.textContent = "❚❚";
+    }
   }
 
-  function closeLightbox() {
-    lightbox.classList.add("hidden");
-    document.body.style.overflow = "";
-  }
+  /* ---------- TRACK CLICKS ---------- */
 
-  // Close on click / tap
-  lightbox.addEventListener("click", closeLightbox);
+  tracks.forEach((track, index) => {
+    const playBtn = track.querySelector(".play-btn");
+    if (!playBtn) return;
 
-  // Swipe support
-  let startX = 0;
-
-  lightbox.addEventListener("touchstart", (e) => {
-    startX = e.touches[0].clientX;
+    playBtn.addEventListener("click", () => {
+      if (currentIndex !== index) {
+        loadTrack(index);
+      } else {
+        togglePlay();
+      }
+    });
   });
 
-  lightbox.addEventListener("touchend", (e) => {
-    const diff = startX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 50) {
-      diff > 0 ? nextImage() : prevImage();
+  /* ---------- PLAYER BAR CONTROLS ---------- */
+
+  if (playPauseBtn) playPauseBtn.addEventListener("click", togglePlay);
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      loadTrack((currentIndex + 1) % tracks.length);
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      loadTrack((currentIndex - 1 + tracks.length) % tracks.length);
+    });
+  }
+
+  if (loopBtn) {
+    loopBtn.addEventListener("click", () => {
+      audio.loop = !audio.loop;
+      loopBtn.style.opacity = audio.loop ? "1" : "0.5";
+    });
+  }
+
+  /* ---------- AUTO-PLAY NEXT TRACK ---------- */
+
+  audio.addEventListener("ended", () => {
+    if (currentIndex === -1) return;
+
+    if (!audio.loop) {
+      const nextIndex = (currentIndex + 1) % tracks.length;
+      loadTrack(nextIndex);
     }
   });
 
-  function nextImage() {
-    currentIndex = (currentIndex + 1) % currentImages.length;
-    lightboxImg.src = currentImages[currentIndex].src;
+  /* ---------- PROGRESS BAR ---------- */
+
+  if (progressBar) {
+    audio.addEventListener("timeupdate", () => {
+      if (!audio.duration) return;
+      progressBar.value = (audio.currentTime / audio.duration) * 100;
+    });
+
+    progressBar.addEventListener("input", () => {
+      if (!audio.duration) return;
+      audio.currentTime = (progressBar.value / 100) * audio.duration;
+    });
   }
 
-  function prevImage() {
-    currentIndex =
-      (currentIndex - 1 + currentImages.length) % currentImages.length;
-    lightboxImg.src = currentImages[currentIndex].src;
+  /* ---------- INFO MODAL ---------- */
+
+  const infoBtn = document.getElementById("infoBtn");
+  const infoModal = document.getElementById("infoModal");
+  const closeInfo = document.getElementById("closeInfo");
+
+  if (infoBtn && infoModal && closeInfo) {
+    infoBtn.addEventListener("click", () => {
+      infoModal.classList.remove("hidden");
+    });
+
+    closeInfo.addEventListener("click", () => {
+      infoModal.classList.add("hidden");
+    });
+
+    infoModal.addEventListener("click", e => {
+      if (e.target === infoModal) infoModal.classList.add("hidden");
+    });
   }
-}
+});
+
+/* ---------- SUPPORT POPUP ---------- */
+
+const supportModal = document.getElementById("supportModal");
+const closeSupport = document.getElementById("closeSupport");
+const continueSupport = document.getElementById("continueSupport");
+
+document.querySelectorAll(".supportBtn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    supportModal.classList.remove("hidden");
+  });
+});
+
+closeSupport.addEventListener("click", () => {
+  supportModal.classList.add("hidden");
+});
+
+continueSupport.addEventListener("click", () => {
+  window.open(
+    "https://docs.google.com/forms/d/10wczcGtOYbHLk2_O1Adk4LRxZ2_W8SLrEXyza7ScF6A/viewform?edit_requested=true",
+    "_blank"
+  );
+});
+
+
